@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Quicksand, Fredoka } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { AuthProvider } from "../context/AuthContext";
 import Navigation from "../components/Navigation";
@@ -16,6 +17,11 @@ const fredoka = Fredoka({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const hubotSans = localFont({
+  src: "../../public/HubotSans-VariableFont_wdth,wght.ttf",
+  variable: "--font-hubot-sans",
+});
+
 export const metadata: Metadata = {
   title: "YouAreOkay - Menstrual Education & Comfort Space",
   description: "A private, safe, and friendly space for girls aged 10-15 to learn about periods, track dates, and check in with their moods.",
@@ -29,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full scroll-smooth">
       <body
-        className={`${quicksand.variable} ${fredoka.variable} font-sans min-h-full flex flex-col bg-cream text-charcoal`}
+        className={`${quicksand.variable} ${fredoka.variable} ${hubotSans.variable} font-sans min-h-full flex flex-col bg-cream text-charcoal`}
       >
         <AuthProvider>
           <div className="flex flex-col min-h-screen">

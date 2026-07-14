@@ -17,8 +17,10 @@
   --color-bubble-teal: #D0F5F3;
   --color-bubble-yellow: #FEF7DE;
   
+  --font-sans: var(--font-hubot-sans), sans-serif;
   --font-quicksand: var(--font-quicksand), sans-serif;
   --font-fredoka: var(--font-fredoka), sans-serif;
+  --font-hubot-sans: var(--font-hubot-sans), sans-serif;
   
   --radius-xl: 1.5rem;
   --radius-2xl: 2rem;
@@ -33,7 +35,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-quicksand), sans-serif;
+  font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
