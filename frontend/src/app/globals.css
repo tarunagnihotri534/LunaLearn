@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF9E80;
+  --color-primary-hover: #FF8A65;
+  --color-primary-light: #FFF0EB;
+  --color-secondary: #E8DFFF;
+  --color-secondary-hover: #D6CAFA;
+  --color-accent: #E0F7FA;
+  --color-accent-hover: #B2EBF2;
+  --color-cream: #FFFBF9;
+  --color-charcoal: #2D2421;
+  --color-warm-gray: #6D625E;
+  --color-soft-rose: #FFF0F2;
+  --color-bubble-pink: #FFD2D9;
+  --color-bubble-purple: #E6DCF8;
+  --color-bubble-teal: #D0F5F3;
+  --color-bubble-yellow: #FEF7DE;
+  
+  --font-quicksand: var(--font-quicksand), sans-serif;
+  --font-fredoka: var(--font-fredoka), sans-serif;
+  
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
+}
+
+:root {
+  --background: #FFFBF9;
+  --foreground: #2D2421;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-quicksand), sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Micro-animations and utility classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.shadow-soft {
+  box-shadow: 0 8px 30px rgb(240, 228, 222, 0.4);
+}
+
+.shadow-bubble {
+  box-shadow: 0 10px 25px rgba(255, 158, 128, 0.15);
+}
+
+/* Soft transition properties */
+.transition-soft {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFBF9;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFD2D9;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF9E80;
+}
+
+/* Wave illustration styles */
+.wave-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+/* Custom illustration elements using CSS only */
+.pad-illustration {
+  width: 120px;
+  height: 200px;
+  background: #ffffff;
+  border: 3px solid #FFD2D9;
+  border-radius: 30px;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+}
+
+.pad-wing-left {
+  width: 30px;
+  height: 60px;
+  background: #ffffff;
+  border: 3px solid #FFD2D9;
+  border-right: none;
+  border-radius: 20px 0 0 20px;
+  position: absolute;
+  left: -30px;
+  top: 70px;
+}
+
+.pad-wing-right {
+  width: 30px;
+  height: 60px;
+  background: #ffffff;
+  border: 3px solid #FFD2D9;
+  border-left: none;
+  border-radius: 0 20px 20px 0;
+  position: absolute;
+  right: -30px;
+  top: 70px;
+}
+
+/* Custom layout elements */
+.bouncy-hover:hover {
+  transform: translateY(-4px) scale(1.02);
+}
