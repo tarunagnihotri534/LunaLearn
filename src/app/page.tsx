@@ -149,7 +149,7 @@ export default function Home() {
             <Sparkles className="w-4 h-4 fill-primary/10 animate-pulse" />
             Your Private, Friendly Comfort Space
           </div>
-          <h1 className="font-fredoka text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
             Growing up is a beautiful{' '}
             <span className="text-primary underline decoration-bubble-pink decoration-wavy decoration-3 underline-offset-8">
               journey
@@ -167,11 +167,11 @@ export default function Home() {
             <Heart className="w-8 h-8 text-primary fill-primary/10" />
           </div>
           <div className="space-y-2">
-            <h3 className="font-fredoka text-xl font-bold text-charcoal">
+            <h3 className="text-xl font-bold text-charcoal">
               A Quick Reminder For You...
             </h3>
             <p className="text-sm md:text-base text-warm-gray leading-relaxed font-medium">
-              You are amazing, your body is doing exactly what it's supposed to do, and there is absolutely nothing to fear. Periods are natural, healthy, and a sign of growing up! 💖
+              You are amazing, your body is doing exactly what it's supposed to do, and there is absolutely nothing to fear. Periods are natural, healthy, and a sign of growing up!
             </p>
           </div>
         </div>
@@ -195,7 +195,7 @@ export default function Home() {
                   <Icon className="w-6 h-6" />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="font-fredoka text-xl font-bold text-charcoal group-hover:text-primary transition-soft flex items-center gap-1.5">
+                  <h3 className="text-xl font-bold text-charcoal group-hover:text-primary transition-soft flex items-center gap-1.5">
                     {feat.name}
                   </h3>
                   <p className="text-sm text-warm-gray leading-relaxed font-medium">
@@ -211,7 +211,7 @@ export default function Home() {
         <div className="pt-6">
           <Link
             href="/parents"
-            className="inline-flex items-center gap-2 text-sm font-fredoka font-semibold text-primary hover:text-primary-hover bg-primary-light/50 border border-primary/10 hover:border-primary/20 px-6 py-2.5 rounded-full transition-soft"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-hover bg-primary-light/50 border border-primary/10 hover:border-primary/20 px-6 py-2.5 rounded-full transition-soft"
           >
             <Users className="w-4 h-4" />
             Are you a parent, guardian, or teacher? Read our Guide

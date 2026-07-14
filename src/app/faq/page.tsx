@@ -75,8 +75,8 @@ export default function FAQPage() {
         
         {/* Title */}
         <div className="text-center space-y-4">
-          <h1 className="font-fredoka text-3xl md:text-5xl font-bold text-charcoal">
-            Questions & Answers 🌙
+          <h1 className="text-3xl md:text-5xl font-bold text-charcoal">
+            Questions & Answers
           </h1>
           <p className="text-base md:text-lg text-warm-gray font-medium max-w-lg mx-auto">
             Find answers to common questions about periods. It's completely private and safe.
@@ -101,7 +101,7 @@ export default function FAQPage() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-1.5 rounded-full text-xs font-fredoka font-bold transition-soft capitalize ${
+              className={`px-4 py-1.5 rounded-full text-xs font-bold transition-soft capitalize ${
                 activeCategory === cat
                   ? 'bg-primary text-white shadow-soft'
                   : 'bg-white text-warm-gray border border-primary/10 hover:border-primary/20'
@@ -116,7 +116,7 @@ export default function FAQPage() {
         <div className="space-y-4">
           {filteredFAQs.length === 0 ? (
             <div className="text-center py-10 text-warm-gray/60 font-semibold bg-white rounded-3xl border border-primary/10">
-              No questions found. Try searching something else! 🔎
+              No questions found. Try searching something else!
             </div>
           ) : (
             filteredFAQs.map((faq) => {
@@ -130,7 +130,7 @@ export default function FAQPage() {
                     onClick={() => toggleAccordion(faq.id)}
                     className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
                   >
-                    <span className="font-fredoka text-base md:text-lg font-bold text-charcoal pr-4 flex items-center gap-2.5">
+                    <span className="text-base md:text-lg font-bold text-charcoal pr-4 flex items-center gap-2.5">
                       <HelpCircle className="w-5 h-5 text-primary shrink-0" />
                       {faq.question}
                     </span>
@@ -160,7 +160,7 @@ export default function FAQPage() {
             <Sparkles className="w-6 h-6 text-primary fill-primary/10" />
           </div>
           <div className="space-y-1">
-            <h4 className="font-fredoka text-base font-bold text-charcoal">Have a different question?</h4>
+            <h4 className="text-base font-bold text-charcoal">Have a different question?</h4>
             <p className="text-xs text-warm-gray leading-relaxed font-semibold">
               If you have a question that isn't answered here, don't keep it to yourself! Ask a trusted adult, your school nurse, or an older female family member. They will be happy to explain and guide you.
             </p>

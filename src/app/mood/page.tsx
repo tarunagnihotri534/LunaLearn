@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { db } from '../../lib/firebase';
 import { collection, addDoc, getDocs, query, orderBy, limit } from 'firebase/firestore';
-import { Heart, Sparkles, Smile, Frown, Coffee, Moon, ShieldAlert, Award, SmilePlus } from 'lucide-react';
+import { Heart, Sparkles, Smile, Frown, Coffee, Moon, ShieldAlert, Award, SmilePlus, Angry, Activity, Mail } from 'lucide-react';
 import gsap from 'gsap';
 
 interface MoodEntry {
@@ -15,30 +15,30 @@ interface MoodEntry {
 }
 
 const moods = [
-  { id: 'happy', label: 'Happy', emoji: '😄', bg: 'bg-bubble-yellow border-amber-200 text-amber-700' },
-  { id: 'calm', label: 'Calm', emoji: '😌', bg: 'bg-bubble-teal border-emerald-200 text-emerald-700' },
-  { id: 'tired', label: 'Tired', emoji: '😴', bg: 'bg-bubble-purple border-purple-200 text-purple-700' },
-  { id: 'sad', label: 'Sad/Moody', emoji: '😢', bg: 'bg-blue-50 border-blue-200 text-blue-700' },
-  { id: 'grumpy', label: 'Grumpy', emoji: '😠', bg: 'bg-bubble-pink border-rose-200 text-rose-700' },
-  { id: 'crampy', label: 'Crampy', emoji: '🤕', bg: 'bg-orange-50 border-orange-200 text-orange-700' },
+  { id: 'happy', label: 'Happy', icon: Smile, bg: 'bg-bubble-yellow border-amber-200 text-amber-700' },
+  { id: 'calm', label: 'Calm', icon: Heart, bg: 'bg-bubble-teal border-emerald-200 text-emerald-700' },
+  { id: 'tired', label: 'Tired', icon: Moon, bg: 'bg-bubble-purple border-purple-200 text-purple-700' },
+  { id: 'sad', label: 'Sad/Moody', icon: Frown, bg: 'bg-blue-50 border-blue-200 text-blue-700' },
+  { id: 'grumpy', label: 'Grumpy', icon: Angry, bg: 'bg-bubble-pink border-rose-200 text-rose-700' },
+  { id: 'crampy', label: 'Crampy', icon: Activity, bg: 'bg-orange-50 border-orange-200 text-orange-700' },
 ];
 
 const symptomsList = [
-  { id: 'cramps', label: 'Tummy Cramps 🤕' },
-  { id: 'headache', label: 'Headache 💆‍♀️' },
-  { id: 'tiredness', label: 'Feeling Tired 🥱' },
-  { id: 'bloating', label: 'Full Tummy 🎈' },
-  { id: 'breakout', label: 'Skin Spotting 🌸' },
-  { id: 'none', label: 'No Symptoms ✨' },
+  { id: 'cramps', label: 'Tummy Cramps' },
+  { id: 'headache', label: 'Headache' },
+  { id: 'tiredness', label: 'Feeling Tired' },
+  { id: 'bloating', label: 'Full Tummy' },
+  { id: 'breakout', label: 'Skin Spotting' },
+  { id: 'none', label: 'No Symptoms' },
 ];
 
 const selfCareChallenges = [
-  "Wrap yourself in a warm blanket and read a page of your favorite book. 📖",
-  "Sip a comforting mug of warm water, chamomile, or mint tea. 🍵",
-  "Close your eyes and take 5 slow, deep breaths. Breathe in comfort, breathe out stress. 💨",
-  "Draw a quick, happy doodle on a piece of paper! 🎨",
-  "Do some light, gentle tummy stretches to relieve any tightness. 🧘‍♀️",
-  "Write down one thing you really like about yourself. 📝",
+  "Wrap yourself in a warm blanket and read a page of your favorite book.",
+  "Sip a comforting mug of warm water, chamomile, or mint tea.",
+  "Close your eyes and take 5 slow, deep breaths. Breathe in comfort, breathe out stress.",
+  "Draw a quick, happy doodle on a piece of paper!",
+  "Do some light, gentle tummy stretches to relieve any tightness.",
+  "Write down one thing you really like about yourself.",
 ];
 
 export default function MoodPage() {
@@ -52,7 +52,7 @@ export default function MoodPage() {
   const [feedback, setFeedback] = useState<{
     message: string;
     challenge: string;
-    moodEmoji: string;
+    moodIcon: React.ComponentType<any>;
   } | null>(null);
 
   const cardRef = useRef<HTMLDivElement>(null);
@@ -88,17 +88,17 @@ export default function MoodPage() {
       case 'happy':
         return "It's wonderful to feel happy! Your happy energy is like sunshine. Keep shining and sharing your smiles! 🌟";
       case 'calm':
-        return "Peaceful and calm is a lovely space to be. It is perfect for resting and listening to what your body needs. 🍃";
+        return "Peaceful and calm is a lovely space to be. It is perfect for resting and listening to what your body needs.";
       case 'tired':
-        return "Your body is working hard growing up! Feeling extra tired is completely normal, especially around your period. Give yourself permission to take a long nap or just rest. 🛌";
+        return "Your body is working hard growing up! Feeling extra tired is completely normal, especially around your period. Give yourself permission to take a long nap or just rest.";
       case 'sad':
-        return "Changing hormones can make you feel sad, teary, or emotional for no clear reason. This is 100% normal and happens to almost all girls! Be extra kind to yourself today. 🌸";
+        return "Changing hormones can make you feel sad, teary, or emotional for no clear reason. This is 100% normal and happens to almost all girls! Be extra kind to yourself today.";
       case 'grumpy':
-        return "Feeling easily annoyed or grumpy is very common. Your body is navigating new hormones. Take a break, listen to your favorite song, and remember this feeling will pass! 💕";
+        return "Feeling easily annoyed or grumpy is very common. Your body is navigating new hormones. Take a break, listen to your favorite song, and remember this feeling will pass!";
       case 'crampy':
-        return "Tummy cramps can be uncomfortable. Try placing a warm hot-water bottle on your stomach, resting on your side with knees curled up, or doing very light stretches. You are so brave! 🤕";
+        return "Tummy cramps can be uncomfortable. Try placing a warm hot-water bottle on your stomach, resting on your side with knees curled up, or doing very light stretches. You are so brave!";
       default:
-        return "You are doing amazing. Keep listening to your body and taking care of yourself! 💖";
+        return "You are doing amazing. Keep listening to your body and taking care of yourself!";
     }
   };
 
@@ -153,7 +153,7 @@ export default function MoodPage() {
     setFeedback({
       message: getReassuranceMessage(selectedMood),
       challenge: randomChallenge,
-      moodEmoji: moodObj?.emoji || '🌸',
+      moodIcon: moodObj?.icon || Heart,
     });
 
     setSubmitting(false);
@@ -165,8 +165,8 @@ export default function MoodPage() {
         
         {/* Header */}
         <div className="text-center space-y-4">
-          <h1 className="font-fredoka text-3xl md:text-5xl font-bold text-charcoal">
-            Daily Feelings Check-In 🌸
+          <h1 className="text-3xl md:text-5xl font-bold text-charcoal">
+            Daily Feelings Check-In
           </h1>
           <p className="text-base md:text-lg text-warm-gray font-medium max-w-xl mx-auto">
             How are you feeling physically and emotionally today? Share it privately and receive a warm hug from YouAreOkay.
@@ -181,7 +181,7 @@ export default function MoodPage() {
             
             {/* Step 1: Mood select */}
             <div className="space-y-3">
-              <label className="font-fredoka text-lg font-bold text-charcoal flex items-center gap-1.5">
+              <label className="text-lg font-bold text-charcoal flex items-center gap-1.5">
                 <Smile className="w-5 h-5 text-primary" />
                 1. How is your mood today?
               </label>
@@ -194,14 +194,17 @@ export default function MoodPage() {
                       setSelectedMood(m.id);
                       setFeedback(null); // Clear previous feedback on selection change
                     }}
-                    className={`p-4 rounded-2xl border-2 flex flex-col items-center justify-center text-center gap-1 transition-all bouncy-hover ${
+                    className={`p-4 rounded-2xl border-2 flex flex-col items-center justify-center text-center gap-2 transition-all bouncy-hover ${
                       selectedMood === m.id
                         ? `${m.bg} scale-102`
                         : 'bg-white border-primary/10 hover:border-primary/20 text-warm-gray'
                     }`}
                   >
-                    <span className="text-3xl">{m.emoji}</span>
-                    <span className="text-xs font-fredoka font-bold">{m.label}</span>
+                    {(() => {
+                      const IconComponent = m.icon;
+                      return <IconComponent className="w-8 h-8 shrink-0" />;
+                    })()}
+                    <span className="text-xs font-bold">{m.label}</span>
                   </button>
                 ))}
               </div>
@@ -209,7 +212,7 @@ export default function MoodPage() {
 
             {/* Step 2: Physical symptoms */}
             <div className="space-y-3">
-              <label className="font-fredoka text-lg font-bold text-charcoal flex items-center gap-1.5">
+              <label className="text-lg font-bold text-charcoal flex items-center gap-1.5">
                 <Heart className="w-5 h-5 text-primary fill-primary/10" />
                 2. Do you have any physical symptoms? (Select all that apply)
               </label>
@@ -221,7 +224,7 @@ export default function MoodPage() {
                       key={sym.id}
                       type="button"
                       onClick={() => handleSymptomToggle(sym.id)}
-                      className={`py-2 px-3 rounded-xl border text-xs font-fredoka font-bold text-center transition-soft ${
+                      className={`py-2 px-3 rounded-xl border text-xs font-bold text-center transition-soft ${
                         active
                           ? 'bg-primary text-white border-primary shadow-soft'
                           : 'bg-white text-warm-gray border-primary/15 hover:border-primary/30'
@@ -236,7 +239,7 @@ export default function MoodPage() {
 
             {/* Step 3: Journal Note */}
             <div className="space-y-3">
-              <label className="font-fredoka text-lg font-bold text-charcoal flex items-center gap-1.5">
+              <label className="text-lg font-bold text-charcoal flex items-center gap-1.5">
                 <SmilePlus className="w-5 h-5 text-primary" />
                 3. Private Journal note (Optional)
               </label>
@@ -252,7 +255,7 @@ export default function MoodPage() {
             <button
               type="submit"
               disabled={!selectedMood || submitting}
-              className="w-full bg-primary hover:bg-primary-hover disabled:bg-primary/40 text-white py-3 rounded-full font-fredoka text-sm font-bold shadow-bubble bouncy-hover transition-soft"
+              className="w-full bg-primary hover:bg-primary-hover disabled:bg-primary/40 text-white py-3 rounded-full text-sm font-bold shadow-bubble bouncy-hover transition-soft"
             >
               {submitting ? 'Saving Check-In...' : 'Save and Get Reassurance'}
             </button>
@@ -267,13 +270,16 @@ export default function MoodPage() {
               >
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-bubble-purple to-accent"></div>
                 
-                <div className="w-16 h-16 rounded-full bg-primary-light flex items-center justify-center mx-auto text-4xl shadow-soft">
-                  {feedback.moodEmoji}
+                <div className="w-16 h-16 rounded-full bg-primary-light flex items-center justify-center mx-auto text-primary shadow-soft">
+                  {(() => {
+                    const FeedbackIcon = feedback.moodIcon;
+                    return <FeedbackIcon className="w-8 h-8 shrink-0" />;
+                  })()}
                 </div>
 
                 <div className="space-y-3">
-                  <h3 className="font-fredoka text-xl font-bold text-charcoal">
-                    YouAreOkay's Warm Hug 💖
+                  <h3 className="text-xl font-bold text-charcoal">
+                    YouAreOkay's Warm Hug
                   </h3>
                   <p className="text-xs md:text-sm text-warm-gray font-semibold leading-relaxed">
                     {feedback.message}
@@ -281,7 +287,7 @@ export default function MoodPage() {
                 </div>
 
                 <div className="bg-bubble-teal/20 border border-accent/25 rounded-2xl p-5 text-left space-y-2.5">
-                  <span className="font-fredoka text-xs font-bold text-emerald-600 uppercase tracking-wider flex items-center gap-1">
+                  <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider flex items-center gap-1">
                     <Sparkles className="w-4 h-4 fill-emerald-600/10" />
                     Today's Self-Care Challenge
                   </span>
@@ -292,8 +298,8 @@ export default function MoodPage() {
               </div>
             ) : (
               <div className="bg-white/40 border border-dashed border-primary/20 rounded-3xl p-8 text-center space-y-4">
-                <span className="text-5xl block animate-bounce">💌</span>
-                <h3 className="font-fredoka text-lg font-bold text-charcoal/70">
+                <Mail className="w-12 h-12 text-primary/40 block animate-bounce mx-auto" />
+                <h3 className="text-lg font-bold text-charcoal/70">
                   Waiting for your check-in...
                 </h3>
                 <p className="text-xs text-warm-gray font-medium leading-relaxed max-w-xs mx-auto">
@@ -304,8 +310,8 @@ export default function MoodPage() {
             
             {/* Safe Helpline/Discussions card */}
             <div className="bg-white border border-primary/10 rounded-3xl p-5 space-y-3 shadow-soft">
-              <h4 className="font-fredoka text-sm font-bold text-charcoal flex items-center gap-1.5">
-                🌸 Need to talk to someone?
+              <h4 className="text-sm font-bold text-charcoal flex items-center gap-1.5">
+                Need to talk to someone?
               </h4>
               <p className="text-xs text-warm-gray leading-relaxed font-semibold">
                 If you ever feel very anxious, confused, or physically unwell, it is always a good idea to chat with a trusted adult like a parent, school counselor, teacher, or older sibling. They care about you and can help you feel better!

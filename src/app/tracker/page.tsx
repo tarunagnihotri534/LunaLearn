@@ -228,7 +228,7 @@ export default function TrackerPage() {
         {/* Left Column: Form & Explanations */}
         <div className="lg:col-span-1 space-y-6">
           <div className="bg-white border border-primary/10 rounded-3xl p-6 shadow-soft space-y-4">
-            <h2 className="font-fredoka text-2xl font-bold text-charcoal flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-charcoal flex items-center gap-2">
               <CalendarIcon className="w-6 h-6 text-primary" />
               Log Your Dates
             </h2>
@@ -243,7 +243,7 @@ export default function TrackerPage() {
                 </p>
                 <button
                   onClick={handleAutoSignup}
-                  className="bg-primary hover:bg-primary-hover text-white text-xs font-fredoka font-bold py-2 px-4 rounded-full transition-soft"
+                  className="bg-primary hover:bg-primary-hover text-white text-xs font-bold py-2 px-4 rounded-full transition-soft"
                 >
                   Create Session
                 </button>
@@ -258,7 +258,7 @@ export default function TrackerPage() {
               )}
               
               <div className="space-y-1">
-                <label className="text-xs font-fredoka font-bold text-charcoal">When did it start?</label>
+                <label className="text-xs font-bold text-charcoal">When did it start?</label>
                 <input
                   type="date"
                   value={startDate}
@@ -268,7 +268,7 @@ export default function TrackerPage() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-fredoka font-bold text-charcoal">When did it end? (Optional)</label>
+                <label className="text-xs font-bold text-charcoal">When did it end? (Optional)</label>
                 <input
                   type="date"
                   value={endDate}
@@ -280,14 +280,14 @@ export default function TrackerPage() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-fredoka font-bold text-charcoal">How was the flow?</label>
+                <label className="text-xs font-bold text-charcoal">How was the flow?</label>
                 <div className="flex gap-2">
                   {(['light', 'medium', 'heavy'] as const).map((level) => (
                     <button
                       key={level}
                       type="button"
                       onClick={() => setFlow(level)}
-                      className={`flex-1 py-1.5 rounded-xl text-xs font-fredoka font-bold border transition-soft capitalize ${
+                      className={`flex-1 py-1.5 rounded-xl text-xs font-bold border transition-soft capitalize ${
                         flow === level
                           ? 'bg-primary text-white border-primary shadow-soft'
                           : 'bg-white text-warm-gray border-primary/10 hover:border-primary/30'
@@ -300,7 +300,7 @@ export default function TrackerPage() {
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-fredoka font-bold text-charcoal">Notes / Symptoms (Optional)</label>
+                <label className="text-xs font-bold text-charcoal">Notes / Symptoms (Optional)</label>
                 <textarea
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
@@ -312,7 +312,7 @@ export default function TrackerPage() {
 
               <button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary-hover text-white py-2.5 rounded-full font-fredoka text-sm font-bold shadow-bubble transition-soft flex items-center justify-center gap-1"
+                className="w-full bg-primary hover:bg-primary-hover text-white py-2.5 rounded-full text-sm font-bold shadow-bubble transition-soft flex items-center justify-center gap-1"
               >
                 <Plus className="w-4 h-4" /> Save Entry
               </button>
@@ -321,7 +321,7 @@ export default function TrackerPage() {
 
           {/* Teen cycles educational tips */}
           <div className="bg-bubble-teal/30 border border-accent/20 rounded-3xl p-5 space-y-3 shadow-soft">
-            <h4 className="font-fredoka text-base font-bold text-charcoal flex items-center gap-1.5">
+            <h4 className="text-base font-bold text-charcoal flex items-center gap-1.5">
               <Info className="w-5 h-5 text-emerald-600 shrink-0" />
               Teens & Irregular Periods
             </h4>
@@ -338,8 +338,8 @@ export default function TrackerPage() {
             
             {/* Calendar Controls */}
             <div className="flex items-center justify-between border-b border-primary/5 pb-4">
-              <h3 className="font-fredoka text-xl font-bold text-charcoal flex items-center gap-1.5">
-                📅 {monthNames[month]} {year}
+              <h3 className="text-xl font-bold text-charcoal flex items-center gap-1.5">
+                <CalendarIcon className="w-5 h-5 text-primary" /> {monthNames[month]} {year}
               </h3>
               <div className="flex items-center gap-2">
                 <button
@@ -361,7 +361,7 @@ export default function TrackerPage() {
             <div className="grid grid-cols-7 gap-1 md:gap-2 text-center">
               {/* Day headers */}
               {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-                <div key={d} className="text-xs font-fredoka font-bold text-warm-gray/60 py-1">
+                <div key={d} className="text-xs font-bold text-warm-gray/60 py-1">
                   {d}
                 </div>
               ))}
@@ -405,7 +405,7 @@ export default function TrackerPage() {
             </div>
 
             {/* Color Legend */}
-            <div className="flex gap-4 text-xs font-fredoka font-semibold justify-center pt-2 border-t border-primary/5">
+            <div className="flex gap-4 text-xs font-semibold justify-center pt-2 border-t border-primary/5">
               <div className="flex items-center gap-1.5">
                 <span className="w-3.5 h-3.5 bg-primary rounded-full"></span>
                 <span>Start/End Day</span>
@@ -424,7 +424,7 @@ export default function TrackerPage() {
                 <Heart className="w-6 h-6 text-secondary-hover fill-secondary-hover/10" />
               </div>
               <div className="space-y-1">
-                <h4 className="font-fredoka text-lg font-bold text-charcoal">Estimated Next Period</h4>
+                <h4 className="text-lg font-bold text-charcoal">Estimated Next Period</h4>
                 <p className="text-xs md:text-sm text-warm-gray leading-relaxed font-semibold">
                   Based on your average cycle of <strong>{cycleInfo.averageLength} days</strong>, your next period might start around <strong>{cycleInfo.nextDate}</strong>.
                   <br />
@@ -436,7 +436,7 @@ export default function TrackerPage() {
 
           {/* Period History Log List */}
           <div className="bg-white border border-primary/10 rounded-3xl p-6 shadow-soft space-y-4">
-            <h3 className="font-fredoka text-lg font-bold text-charcoal">History Log</h3>
+            <h3 className="text-lg font-bold text-charcoal">History Log</h3>
             
             {loading ? (
               <div className="text-center py-6 text-xs text-warm-gray font-semibold">Loading logs...</div>
@@ -450,7 +450,7 @@ export default function TrackerPage() {
                   <div key={log.id} className="flex justify-between items-center bg-cream/40 border border-primary/5 rounded-2xl p-4 hover:scale-[1.005] transition-soft shadow-soft">
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs bg-primary-light text-primary font-bold font-fredoka px-2 py-0.5 rounded-full capitalize">
+                        <span className="text-xs bg-primary-light text-primary font-bold px-2 py-0.5 rounded-full capitalize">
                           {log.flow} Flow
                         </span>
                         <span className="text-[10px] text-warm-gray/60 font-semibold">

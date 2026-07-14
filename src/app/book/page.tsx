@@ -10,7 +10,7 @@ const chapters = [
     id: 1,
     title: 'Introduction to Puberty and Menstruation',
     subtitle: 'What to Expect',
-    emoji: '🌸',
+    emoji: '',
     color: 'bg-bubble-pink',
     borderColor: 'border-primary/30',
     content: [
@@ -40,7 +40,7 @@ const chapters = [
     id: 2,
     title: 'Understanding Your Menstrual Cycle',
     subtitle: 'The Science Behind Periods',
-    emoji: '🔬',
+    emoji: '',
     color: 'bg-bubble-purple',
     borderColor: 'border-secondary/40',
     content: [
@@ -82,7 +82,7 @@ const chapters = [
     id: 3,
     title: 'Practical Tips for Managing Your Period',
     subtitle: 'Hygiene and Comfort',
-    emoji: '🛡️',
+    emoji: '',
     color: 'bg-bubble-teal',
     borderColor: 'border-accent/40',
     content: [
@@ -115,7 +115,7 @@ const chapters = [
     id: 4,
     title: 'Emotional and Social Aspects of Menstruation',
     subtitle: 'Coping With Changes',
-    emoji: '💛',
+    emoji: '',
     color: 'bg-bubble-yellow',
     borderColor: 'border-amber-200/50',
     content: [
@@ -148,7 +148,7 @@ const chapters = [
     id: 5,
     title: 'Special Situations and Troubleshooting',
     subtitle: 'When Things Go Awry',
-    emoji: '🔧',
+    emoji: '',
     color: 'bg-bubble-pink',
     borderColor: 'border-primary/20',
     content: [
@@ -186,7 +186,7 @@ const chapters = [
     id: 6,
     title: 'Growing Up',
     subtitle: 'Embracing Changes and Moving Forward',
-    emoji: '🌟',
+    emoji: '',
     color: 'bg-bubble-purple',
     borderColor: 'border-secondary/30',
     content: [
@@ -219,7 +219,7 @@ const chapters = [
     id: 7,
     title: 'Conclusion',
     subtitle: 'Celebrating Your Journey Through Puberty',
-    emoji: '🎉',
+    emoji: '',
     color: 'bg-bubble-teal',
     borderColor: 'border-accent/30',
     content: [
@@ -248,7 +248,7 @@ const chapters = [
       },
       {
         type: 'paragraph',
-        text: 'Thank you for reading. Here\'s to your journey — may it be filled with kindness, understanding, and an abundance of self-love. 💖',
+        text: 'Thank you for reading. Here\'s to your journey — may it be filled with kindness, understanding, and an abundance of self-love.',
       },
     ],
   },
@@ -303,8 +303,8 @@ export default function BookPage() {
           <div className="flex items-center gap-2 flex-1 min-w-0">
             <BookOpen className="w-5 h-5 text-primary shrink-0" />
             <div className="min-w-0">
-              <p className="font-fredoka text-xs text-warm-gray truncate">The Period Book · Karen Gravelle</p>
-              <p className="font-fredoka text-sm font-bold text-charcoal truncate">
+              <p className="text-xs text-warm-gray truncate">The Period Book · Karen Gravelle</p>
+              <p className="text-sm font-bold text-charcoal truncate">
                 Ch. {chapter.id}: {chapter.title}
               </p>
             </div>
@@ -339,7 +339,7 @@ export default function BookPage() {
         {tocOpen && (
           <div className="border-t border-primary/10 bg-white/95 backdrop-blur-md max-h-[60vh] overflow-y-auto">
             <div className="max-w-6xl mx-auto px-4 md:px-8 py-4">
-              <p className="font-fredoka text-xs font-bold text-primary uppercase tracking-widest mb-3 flex items-center gap-1.5">
+              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3 flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5" /> Table of Contents
               </p>
               <div className="space-y-1">
@@ -354,12 +354,12 @@ export default function BookPage() {
                         : 'hover:bg-primary-light text-charcoal'
                     }`}
                   >
-                    <span className="text-xl shrink-0">{ch.emoji}</span>
+                    {ch.emoji && <span className="text-xl shrink-0">{ch.emoji}</span>}
                     <div>
-                      <p className={`font-fredoka text-xs font-bold uppercase tracking-wide ${i === activeChapter ? 'text-white/70' : 'text-warm-gray'}`}>
+                      <p className={`text-xs font-bold uppercase tracking-wide ${i === activeChapter ? 'text-white/70' : 'text-warm-gray'}`}>
                         Chapter {ch.id}
                       </p>
-                      <p className={`font-fredoka text-sm font-bold ${i === activeChapter ? 'text-white' : 'text-charcoal'}`}>
+                      <p className={`text-sm font-bold ${i === activeChapter ? 'text-white' : 'text-charcoal'}`}>
                         {ch.title}
                       </p>
                       <p className={`text-xs ${i === activeChapter ? 'text-white/70' : 'text-warm-gray'}`}>
@@ -381,14 +381,14 @@ export default function BookPage() {
           <div className={`${chapter.color} rounded-3xl p-8 md:p-12 mb-10 shadow-soft border ${chapter.borderColor} relative overflow-hidden`}>
             <div className="absolute top-0 right-0 w-40 h-40 rounded-bl-full bg-white/10 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-24 h-24 rounded-tr-full bg-white/10 pointer-events-none" />
-            <p className="font-fredoka text-sm font-bold uppercase tracking-widest text-charcoal/60 mb-2">
+            <p className="text-sm font-bold uppercase tracking-widest text-charcoal/60 mb-2">
               Chapter {chapter.id} of {chapters.length}
             </p>
-            <div className="text-6xl mb-4">{chapter.emoji}</div>
-            <h1 className="font-fredoka text-3xl md:text-4xl font-bold text-charcoal leading-tight mb-2">
+            {chapter.emoji && <div className="text-6xl mb-4">{chapter.emoji}</div>}
+            <h1 className="text-3xl md:text-4xl font-bold text-charcoal leading-tight mb-2">
               {chapter.title}
             </h1>
-            <p className="font-fredoka text-lg text-charcoal/70 font-semibold">
+            <p className="text-lg text-charcoal/70 font-semibold">
               {chapter.subtitle}
             </p>
           </div>
@@ -406,7 +406,7 @@ export default function BookPage() {
               if (block.type === 'section') {
                 return (
                   <div key={idx} className="bg-white border border-primary/10 rounded-3xl p-6 md:p-8 shadow-soft space-y-3">
-                    <h2 className="font-fredoka text-xl md:text-2xl font-bold text-charcoal">
+                    <h2 className="text-xl md:text-2xl font-bold text-charcoal">
                       {block.heading}
                     </h2>
                     <p className="text-sm md:text-base text-warm-gray font-medium leading-relaxed">
@@ -444,14 +444,14 @@ export default function BookPage() {
               id="prev-chapter"
               onClick={() => goTo(Math.max(0, activeChapter - 1))}
               disabled={activeChapter === 0}
-              className="flex items-center gap-2 px-5 py-3 rounded-full font-fredoka font-bold text-sm bg-white border border-primary/15 shadow-soft transition-soft hover:bg-primary-light hover:border-primary/30 disabled:opacity-40 disabled:cursor-not-allowed text-charcoal"
+              className="flex items-center gap-2 px-5 py-3 rounded-full font-bold text-sm bg-white border border-primary/15 shadow-soft transition-soft hover:bg-primary-light hover:border-primary/30 disabled:opacity-40 disabled:cursor-not-allowed text-charcoal"
             >
               <ChevronLeft className="w-4 h-4" />
               Previous
             </button>
 
             <div className="text-center">
-              <p className="font-fredoka text-xs text-warm-gray">
+              <p className="text-xs text-warm-gray">
                 {activeChapter + 1} of {chapters.length}
               </p>
             </div>
@@ -460,7 +460,7 @@ export default function BookPage() {
               <button
                 id="next-chapter"
                 onClick={() => goTo(Math.min(chapters.length - 1, activeChapter + 1))}
-                className="flex items-center gap-2 px-5 py-3 rounded-full font-fredoka font-bold text-sm bg-primary text-white shadow-bubble transition-soft hover:bg-primary-hover"
+                className="flex items-center gap-2 px-5 py-3 rounded-full font-bold text-sm bg-primary text-white shadow-bubble transition-soft hover:bg-primary-hover"
               >
                 Next Chapter
                 <ChevronRight className="w-4 h-4" />
@@ -468,9 +468,9 @@ export default function BookPage() {
             ) : (
               <Link
                 href="/learn"
-                className="flex items-center gap-2 px-5 py-3 rounded-full font-fredoka font-bold text-sm bg-primary text-white shadow-bubble transition-soft hover:bg-primary-hover"
+                className="flex items-center gap-2 px-5 py-3 rounded-full font-bold text-sm bg-primary text-white shadow-bubble transition-soft hover:bg-primary-hover"
               >
-                All Done! 🎉
+                All Done!
               </Link>
             )}
           </div>

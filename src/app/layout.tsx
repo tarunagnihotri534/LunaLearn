@@ -1,21 +1,8 @@
 import type { Metadata } from "next";
-import { Quicksand, Fredoka } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { AuthProvider } from "../context/AuthContext";
 import Navigation from "../components/Navigation";
-
-const quicksand = Quicksand({
-  variable: "--font-quicksand",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const fredoka = Fredoka({
-  variable: "--font-fredoka",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
 
 const hubotSans = localFont({
   src: "../../public/HubotSans-VariableFont_wdth,wght.ttf",
@@ -35,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full scroll-smooth">
       <body
-        className={`${quicksand.variable} ${fredoka.variable} ${hubotSans.variable} font-sans min-h-full flex flex-col bg-cream text-charcoal`}
+        className={`${hubotSans.variable} font-sans min-h-full flex flex-col bg-cream text-charcoal`}
       >
         <AuthProvider>
           <div className="flex flex-col min-h-screen">
@@ -47,8 +34,8 @@ export default function RootLayout({
             {/* Global Sticky Footer Medical Disclaimer */}
             <footer className="bg-soft-rose border-t border-primary/10 py-6 px-4 md:px-8 mt-auto text-center z-10">
               <div className="max-w-4xl mx-auto space-y-2">
-                <p className="font-fredoka text-primary font-semibold text-sm tracking-wide uppercase">
-                  🌸 Reassurance & Educational Space 🌸
+                <p className="text-primary font-semibold text-sm tracking-wide uppercase">
+                  Reassurance & Educational Space
                 </p>
                 <p className="text-xs text-warm-gray leading-relaxed max-w-2xl mx-auto">
                   <strong>Disclaimer:</strong> YouAreOkay is built to help you learn, feel comfortable, and track your cycle. It is not a medical tool and does not provide diagnoses. Always talk to a trusted adult, school nurse, or doctor if you have questions or concerns about your health.

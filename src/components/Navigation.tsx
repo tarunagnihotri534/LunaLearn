@@ -40,7 +40,7 @@ const Navigation = () => {
           <div className="w-9 h-9 bg-primary-light rounded-full flex items-center justify-center group-hover:scale-110 transition-soft">
             <Heart className="w-5 h-5 text-primary fill-primary/20" />
           </div>
-          <span className="font-fredoka text-2xl font-bold text-primary tracking-wide">
+          <span className="text-2xl font-bold text-primary tracking-wide">
             YouAreOkay
           </span>
         </Link>
@@ -54,7 +54,7 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full font-fredoka text-sm font-semibold transition-soft ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-soft ${
                   active
                     ? 'bg-primary text-white shadow-bubble'
                     : `text-charcoal/80 ${item.color}`
@@ -73,7 +73,7 @@ const Navigation = () => {
             <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
           ) : user ? (
             <div className="flex items-center gap-2 bg-primary-light/80 border border-primary/20 rounded-full py-1.5 pl-3 pr-2 shadow-soft">
-              <span className="text-xs font-fredoka font-semibold text-primary flex items-center gap-1.5 select-none">
+              <span className="text-xs font-semibold text-primary flex items-center gap-1.5 select-none">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
                 {user.username}
               </span>
@@ -89,7 +89,7 @@ const Navigation = () => {
             <button
               onClick={handleGetStarted}
               disabled={authActionLoading}
-              className="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full font-fredoka text-sm font-semibold shadow-bubble bouncy-hover transition-soft"
+              className="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full text-sm font-semibold shadow-bubble bouncy-hover transition-soft"
             >
               {authActionLoading ? 'Creating Session...' : 'Get Started'}
             </button>
@@ -113,7 +113,7 @@ const Navigation = () => {
               }`}
             >
               <Icon className="w-5 h-5" />
-              <span className="text-[10px] font-fredoka font-semibold mt-1">
+              <span className="text-[10px] font-semibold mt-1">
                 {item.name}
               </span>
             </Link>
