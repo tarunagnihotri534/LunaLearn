@@ -1,23 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #FF9E80;
-  --color-primary-hover: #FF8A65;
-  --color-primary-light: #FFF0EB;
-  --color-secondary: #E8DFFF;
-  --color-secondary-hover: #D6CAFA;
-  --color-accent: #E0F7FA;
-  --color-accent-hover: #B2EBF2;
-  --color-cream: #FFFBF9;
-  --color-charcoal: #2D2421;
-  --color-warm-gray: #6D625E;
-  --color-soft-rose: #FFF0F2;
-  --color-bubble-pink: #FFD2D9;
-  --color-bubble-purple: #E6DCF8;
-  --color-bubble-teal: #D0F5F3;
-  --color-bubble-yellow: #FEF7DE;
+  --color-primary: #9C4A5A;
+  --color-primary-hover: #853A48;
+  --color-primary-light: #FDF7F8;
+  --color-secondary: #6B5B7B;
+  --color-secondary-hover: #584B66;
+  --color-accent: #E2ECE9;
+  --color-accent-hover: #D2DFDB;
+  --color-cream: #FAF9F6;
+  --color-charcoal: #1F1A19;
+  --color-warm-gray: #7A706D;
+  --color-soft-rose: #F4EAEB;
+  --color-bubble-pink: #F5E3E6;
+  --color-bubble-purple: #EAE3F2;
+  --color-bubble-teal: #E2EEED;
+  --color-bubble-yellow: #F7F2E2;
   
-  --font-sans: var(--font-hubot-sans), sans-serif;
+  --font-sans: "Plus Jakarta Sans", var(--font-hubot-sans), sans-serif;
+  --font-serif: "Playfair Display", serif;
   --font-hubot-sans: var(--font-hubot-sans), sans-serif;
   
   --radius-xl: 1.5rem;
@@ -26,8 +28,8 @@
 }
 
 :root {
-  --background: #FFFBF9;
-  --foreground: #2D2421;
+  --background: #FAF9F6;
+  --foreground: #1F1A19;
 }
 
 body {
@@ -38,6 +40,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+h1, h2, h3, h4, .font-serif-header {
+  font-family: var(--font-serif);
+  font-weight: 700;
+}
+
 /* Micro-animations and utility classes */
 .glass-panel {
   background: rgba(255, 255, 255, 0.7);
@@ -46,11 +53,11 @@ body {
 }
 
 .shadow-soft {
-  box-shadow: 0 8px 30px rgb(240, 228, 222, 0.4);
+  box-shadow: 0 8px 30px rgba(156, 74, 90, 0.04);
 }
 
 .shadow-bubble {
-  box-shadow: 0 10px 25px rgba(255, 158, 128, 0.15);
+  box-shadow: 0 10px 25px rgba(156, 74, 90, 0.12);
 }
 
 /* Soft transition properties */

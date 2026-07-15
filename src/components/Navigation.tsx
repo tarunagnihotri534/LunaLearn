@@ -40,7 +40,7 @@ const Navigation = () => {
           <div className="w-9 h-9 bg-primary-light rounded-full flex items-center justify-center group-hover:scale-110 transition-soft">
             <Heart className="w-5 h-5 text-primary fill-primary/20" />
           </div>
-          <span className="text-2xl font-bold text-primary tracking-wide">
+          <span className="font-serif text-2xl font-bold text-primary tracking-tight">
             YouAreOkay
           </span>
         </Link>
