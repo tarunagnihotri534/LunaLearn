@@ -271,6 +271,95 @@ export default function LearnPage() {
           </div>
         </div>
 
+        {/* Video Recommendation Section */}
+        <div className="bg-white border border-primary/10 rounded-3xl p-6 md:p-8 shadow-soft space-y-6">
+          <div className="space-y-2">
+            <span className="text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 justify-center md:justify-start">
+              <Sparkles className="w-3.5 h-3.5 fill-primary/15" /> Video Resource
+            </span>
+            <h3 className="text-xl md:text-2xl font-bold text-charcoal flex items-center gap-2 justify-center md:justify-start">
+              1. What does the first period feel like? <span className="text-xs md:text-sm font-sans font-semibold px-2.5 py-1 rounded-full bg-primary-light text-primary border border-primary/10">Best overall</span>
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            {/* Video Thumbnail Link */}
+            <a
+              href="https://youtu.be/cfROFgkV43E?si=Vhsy9eNV6efERthW"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block aspect-video w-full overflow-hidden rounded-2xl border border-primary/10 bg-charcoal/5 shadow-soft transition-all duration-300 hover:shadow-lg"
+            >
+              {/* Thumbnail Image */}
+              <img
+                src="/p1.avif"
+                alt="What does the first period feel like?"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              
+              {/* Dark Overlay on Hover */}
+              <div className="absolute inset-0 bg-charcoal/20 transition-opacity duration-300 group-hover:bg-charcoal/30 flex items-center justify-center" />
+              
+              {/* Play Button Icon Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm text-primary flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
+                  <svg
+                    className="w-8 h-8 fill-current ml-1"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Video Badge */}
+              <div className="absolute bottom-3 right-3 bg-charcoal/70 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-bold text-white tracking-wide">
+                YouTube
+              </div>
+            </a>
+
+            {/* Video Description & Highlights */}
+            <div className="space-y-4 text-left">
+              <h4 className="text-lg font-bold text-charcoal">What this video covers:</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-bubble-pink flex items-center justify-center shrink-0 text-primary">
+                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-sm md:text-base text-warm-gray font-medium leading-relaxed">
+                    Explains what to expect before and during a first period.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-bubble-pink flex items-center justify-center shrink-0 text-primary">
+                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-sm md:text-base text-warm-gray font-medium leading-relaxed">
+                    Covers common questions and myths.
+                  </span>
+                </li>
+              </ul>
+              <div className="pt-2">
+                <a
+                  href="https://youtu.be/cfROFgkV43E?si=Vhsy9eNV6efERthW"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-primary-light hover:bg-primary/10 border border-primary/20 text-primary px-5 py-2.5 rounded-full font-bold text-sm transition-soft bouncy-hover"
+                >
+                  Watch Video on YouTube
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
